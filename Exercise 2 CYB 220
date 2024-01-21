@@ -1,0 +1,144 @@
+# This is Evan Wingold's code for Exercise 2 CYB 220
+
+# This is a program to store new vehicle inventory and assist with monthly payments.
+
+# Here is my variable for car brand
+favorite_car_brand = "Toyota"
+
+# List of Toyota models from cheapest to expensive
+toyota_models = ["Corolla", "Prius", "GR Supra", "Mirai"]
+
+# Appending a 6th model to the list
+toyota_models.append("Crown")
+
+# Creating a list of 5 standard colors for each Toyota model
+colors_by_model = {
+    "Corolla": ["Super White", "Celesite", "Blue Crush Metallic", "Black Sand Flat", "Barcelona Red Metallic"],
+    "Prius": ["Supersonic Red", "Reservoir Blue", "Classic Silver", "Midnight Black Metallic", "Cutting Edge"],
+    "GR Supra": ["Renaissance Red", "Nocturnal", "Phantom Matte Grey", "Nitro Yellow", "Downshift Blue"],
+    "Mirai": ["Wind Chill Pearl", "Classic Silver Metallic", "Blue Crush Metallic", "Midnight Black Metallic", "Ruby Flare Pearl"],
+    "Crown": ["Black", "Heavy Metal", "Hydro Blue", "Oxygen White", "Supersonic Red"]
+}
+
+# Replacing the last color in each list with a new color
+new_color = "Ice Cap"
+
+for model in colors_by_model:
+    colors_by_model[model][-1] = new_color
+
+
+# Creating a Variable for new years models
+new_years_models = {
+    "Corolla": 2024,
+    "Prius": 2024,
+    "GR Supra": 2024,
+    "Mirai": 2024,
+    "Crown": 2024
+}
+# Creating MSRP constants for each model
+MSRP_COROLLA = 22050
+MSRP_PRIUS = 27950
+MSRP_GR_SUPRA = 46440
+MSRP_MIRAI = 49500
+MSRP_CROWN = 40350
+
+# Creating constants for number of months for different loans
+TOTAL_MONTHS_4_YEAR_LOAN = 48
+TOTAL_MONTHS_5_YEAR_LOAN = 60
+TOTAL_MONTHS_6_YEAR_LOAN = 72
+
+# Creating a variable for the guest's name
+guest_name = "Guest"
+
+# Creating a welcome message using the f string
+welcome_message = f"Hello {guest_name}! Welcome to Evan's Car Dealership!"
+
+# Creating an awesome banner for the dealership
+awesome_banner = """
+  __     __     ______     __         ______     ______     __    __     ______        ______   ______        ______     __   __   ______     __   __     ______        ______     ______     ______        _____     ______     ______     __         ______     ______     ______     __  __     __     ______  
+/\ \  _ \ \   /\  ___\   /\ \       /\  ___\   /\  __ \   /\ "-./  \   /\  ___\      /\__  _\ /\  __ \      /\  ___\   /\ \ / /  /\  __ \   /\ "-.\ \   /\  ___\      /\  ___\   /\  __ \   /\  == \      /\  __-.  /\  ___\   /\  __ \   /\ \       /\  ___\   /\  == \   /\  ___\   /\ \_\ \   /\ \   /\  == \ 
+\ \ \/ ".\ \  \ \  __\   \ \ \____  \ \ \____  \ \ \/\ \  \ \ \-./\ \  \ \  __\      \/_/\ \/ \ \ \/\ \     \ \  __\   \ \ \'/   \ \  __ \  \ \ \-.  \  \ \___  \     \ \ \____  \ \  __ \  \ \  __<      \ \ \/\ \ \ \  __\   \ \  __ \  \ \ \____  \ \  __\   \ \  __<   \ \___  \  \ \  __ \  \ \ \  \ \  _-/ 
+ \ \__/".~\_\  \ \_____\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \ \_\  \ \_____\       \ \_\  \ \_____\     \ \_____\  \ \__|    \ \_\ \_\  \ \_\\"\_\  \/\_____\     \ \_____\  \ \_\ \_\  \ \_\ \_\     \ \____-  \ \_____\  \ \_\ \_\  \ \_____\  \ \_____\  \ \_\ \_\  \/\_____\  \ \_\ \_\  \ \_\  \ \_\   
+  \/_/   \/_/   \/_____/   \/_____/   \/_____/   \/_____/   \/_/  \/_/   \/_____/        \/_/   \/_____/      \/_____/   \/_/      \/_/\/_/   \/_/ \/_/   \/_____/      \/_____/   \/_/\/_/   \/_/ /_/      \/____/   \/_____/   \/_/\/_/   \/_____/   \/_____/   \/_/ /_/   \/_____/   \/_/\/_/   \/_/   \/_/   
+"""
+# Printing the awesome banner and welcome message
+print(awesome_banner)
+print(welcome_message)
+
+# Creating a function to print new years vehicle information
+def print_vehicle_info(model, year, colors):
+    print(f"\n{model.title()} ({year}):")
+    print(f"Available Colors: {', '.join(colors)}")
+    print()
+# Printing information for model, year, and color options
+for model in sorted(colors_by_model.keys()):
+    print_vehicle_info(model, new_years_models[model], colors_by_model[model])
+
+# Creating constants for first vehicle 5-year loan
+total_loan_amount_corolla = MSRP_COROLLA
+total_months_corolla = TOTAL_MONTHS_5_YEAR_LOAN
+# Calculating the monthly payment for the Corolla
+monthly_payment_corolla = total_loan_amount_corolla / total_months_corolla
+# Printing the amount to pay per month and a nice message :)
+print(f" Here is the monthly payment for the corolla! (5-year loan): ${monthly_payment_corolla:.2f} \n I hope that we can help you with your purchasing decision!")
+
+# Creating constants for 4 and 6-year loans
+total_loan_corolla_4_year = TOTAL_MONTHS_4_YEAR_LOAN
+total_loan_corolla_6_year = TOTAL_MONTHS_6_YEAR_LOAN
+# Calculate monthly payments for Corolla with different loan options
+monthly_payment_corolla_4_year = total_loan_amount_corolla / total_loan_corolla_4_year
+monthly_payment_corolla_6_year = total_loan_amount_corolla / total_loan_corolla_6_year
+# Print the monthly payments for different loan options
+print(f"\nMonthly Payment for Corolla (4-year loan): ${monthly_payment_corolla_4_year:.2f}")
+print(f"\nMonthly Payment for Corolla (6-year loan): ${monthly_payment_corolla_6_year:.2f}")
+
+#Creating Constants for an 8-year plan for the Corolla
+total_months_corolla_8_year = 96
+total_loan_amount_corolla = MSRP_COROLLA
+# Calculating and 8-year monthly payment
+monthly_payment_corolla_8_year = total_loan_amount_corolla / total_months_corolla_8_year
+# Print the monthly payment for Corolla with an 8-year loan
+print(f"\nHere is a longer monthly plan (8-year loan): ${monthly_payment_corolla_8_year:.2f}")
+
+
+# Creating a 5-year plan for the Prius
+total_loan_amount_prius = MSRP_PRIUS
+total_months_prius = TOTAL_MONTHS_5_YEAR_LOAN
+# Calculating monthly payment for Prius
+monthly_payment_prius = total_loan_amount_prius / total_months_prius
+
+# Creating a 5-year plan for the GR Supra
+total_loan_amount_gr_supra = MSRP_GR_SUPRA
+total_months_gr_supra = TOTAL_MONTHS_5_YEAR_LOAN
+# Calculating monthly payment for GR Supra
+monthly_payment_gr_supra = total_loan_amount_gr_supra / total_months_gr_supra
+
+# Creating a 5-year plan for the Mirai
+total_loan_amount_mirai = MSRP_MIRAI
+total_months_mirai = TOTAL_MONTHS_5_YEAR_LOAN
+# Calculating monthly payment for Mirai
+monthly_payment_mirai = total_loan_amount_mirai / total_months_mirai
+
+# Creating a 5-year plan for the Crown
+total_loan_amount_crown = MSRP_CROWN
+total_months_crown = TOTAL_MONTHS_5_YEAR_LOAN
+# Calculating monthly payment for Crown
+monthly_payment_crown = total_loan_amount_crown / total_months_crown
+
+# Printing the monthly payment for Crown
+print(f"\nIn case you are interested, here are the payments for our other cars. (5-year loan): \nPrius ${monthly_payment_prius:.2f}\nGR Supra ${monthly_payment_gr_supra:.2f}\nMirai ${monthly_payment_mirai:.2f},\nCrown ${monthly_payment_crown:.2f}")
+
+# Creating constants for paying cash for the Corolla
+total_loan_amount_corolla = MSRP_COROLLA
+# Calculating the amount that would be paid in cash
+total_paid_in_cash_corolla = total_loan_amount_corolla
+# Printing the total amount paid in cash for Corolla
+print(f"\nIn comparison, here is how much you would pay for the Corolla in Cash without interest: ${total_paid_in_cash_corolla:.2f}")
+
+# Creating a bargain discount for the Corolla
+original_price_corolla = MSRP_COROLLA
+bargain_discount = 500
+# Calculating the bargain price for Corolla
+bargain_price_corolla = original_price_corolla - bargain_discount
+# Print the bargain price for Corolla
+print(f"\nSince you have been so cooperative in this process, we are willing to knock off $500 for a bargain price: ${bargain_price_corolla:.2f}")
